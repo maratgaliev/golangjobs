@@ -6,15 +6,11 @@ addons:
 services:
     - postgresql
 before_script:
-    - 'psql -c ''create database golangjobs;'' -U postgres'
-    - 'go get -v github.com/rubenv/sql-migrate/...'
-    - 'go get github.com/golang/mock/mockgen'
-    - 'go get -u github.com/go-swagger/go-swagger/cmd/swagger'
+    - 'make init'
 os:
     - linux
 dist: xenial
 env:
     - GO111MODULE=on
 script:
-    - 'go get -t -v ./...'
-    - 'go test -v -race ./...'
+    - 'make test'
