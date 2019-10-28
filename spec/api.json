@@ -1,0 +1,212 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "Golang API",
+    "title": "github.com/maratgaliev/golangjobs.",
+    "contact": {
+      "email": "kazanlug@gmail.com"
+    },
+    "version": "0.1.3"
+  },
+  "host": "localhost",
+  "basePath": "/api",
+  "paths": {
+    "/jobs": {
+      "get": {
+        "description": "Get jobs list",
+        "operationId": "getJobs",
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Job"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create job",
+        "operationId": "createJob",
+        "parameters": [
+          {
+            "description": "new job",
+            "name": "job",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Job"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Job"
+            }
+          },
+          "400": {
+            "description": "Bad request param"
+          }
+        }
+      }
+    },
+    "/jobs/{id}": {
+      "get": {
+        "description": "Get job",
+        "operationId": "getJob",
+        "parameters": [
+          {
+            "type": "int",
+            "description": "job id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Job"
+            }
+          },
+          "400": {
+            "description": "Bad request param `id`"
+          },
+          "404": {
+            "description": "Job `id`= not found"
+          }
+        }
+      },
+      "put": {
+        "description": "Update job",
+        "operationId": "updateJob",
+        "parameters": [
+          {
+            "type": "int",
+            "description": "job id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "updated job",
+            "name": "job",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Job"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Job updated"
+          },
+          "400": {
+            "description": "Bad request param"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete job",
+        "operationId": "deleteJob",
+        "parameters": [
+          {
+            "type": "int",
+            "description": "job id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Job deleted"
+          },
+          "400": {
+            "description": "Bad request param `id`"
+          },
+          "404": {
+            "description": "Job `id`= not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Job": {
+      "description": "Job entity, represents job",
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "x-go-name": "City"
+        },
+        "company": {
+          "type": "string",
+          "x-go-name": "Company"
+        },
+        "contact_name": {
+          "type": "string",
+          "x-go-name": "ContactName"
+        },
+        "currency_type": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CurrencyType"
+        },
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "email": {
+          "type": "string",
+          "x-go-name": "Email"
+        },
+        "employment_type": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "EmploymentType"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
+        "is_approved": {
+          "type": "boolean",
+          "x-go-name": "IsApproved"
+        },
+        "is_remote": {
+          "type": "boolean",
+          "x-go-name": "IsRemote"
+        },
+        "phone": {
+          "type": "string",
+          "x-go-name": "Phone"
+        },
+        "salary": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Salary"
+        },
+        "title": {
+          "type": "string",
+          "x-go-name": "Title"
+        }
+      },
+      "x-go-package": "github.com/maratgaliev/golangjobs/model"
+    }
+  }
+}
