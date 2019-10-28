@@ -10,8 +10,7 @@
   ],
   "swagger": "2.0",
   "info": {
-    "description": "Golang API",
-    "title": "github.com/maratgaliev/golangjobs.",
+    "description": "REST API for golangjobs.ru\nGolang API",
     "contact": {
       "email": "kazanlug@gmail.com"
     },

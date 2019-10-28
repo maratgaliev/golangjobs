@@ -1,4 +1,4 @@
-// github.com/maratgaliev/golangjobs.
+// REST API for golangjobs.ru
 // Golang API
 // Version: 0.1.3
 // Schemes: http
@@ -70,12 +70,10 @@ func ApiRunner(conf *config.Config, js service.JobService) *Api {
 	return api
 }
 
-// Запустить api
 func (api *Api) Start() error {
 	return api.Http.Start(":" + strconv.Itoa(api.conf.Api.HttpPort))
 }
 
-// Инфо об api
 func (api *Api) GetApiInfo() ApiInfo {
 	return api.apiInfo
 }
@@ -163,7 +161,6 @@ func (api *Api) createJob(c echo.Context) error {
 	req := &model.Job{}
 	if err := c.Bind(req); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, "Bad request param: "+err.Error())
-		return err
 	}
 	if err := api.validate.Struct(req); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, "Bad request param: "+err.Error())
