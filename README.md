@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/maratgaliev/golangjobs.svg?branch=master)](https://travis-ci.org/maratgaliev/golangjobs)
+
 # github.com/maratgaliev/golangjobs
 
 Golang REST API + Echo framework
