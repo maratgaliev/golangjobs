@@ -6,11 +6,12 @@ addons:
 services:
     - postgresql
 before_script:
+    - 'psql -c ''create database golangjobs;'' -U postgres'
     - 'make init'
 os:
     - linux
 dist: xenial
 env:
-    - GO111MODULE=on
+    - GO111MODULE=off
 script:
     - 'make test'
