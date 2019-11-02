@@ -55,6 +55,13 @@ func ApiRunner(conf *config.Config, js service.JobService) *Api {
 		api.Http.Use(middleware.Logger())
 		api.apiInfo.MW = append(api.apiInfo.MW, "Logger")
 	}
+
+	api.Http.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*"},
+		AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete},
+		AllowHeaders: []string{"Accept", "Cache-Control", "Content-Type", "X-Requested-With"},
+	}))
+
 	api.Http.GET("/", api.index)
 	api.Http.Static("/spec", "spec")
 

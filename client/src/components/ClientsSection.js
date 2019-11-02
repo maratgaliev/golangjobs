@@ -17,23 +17,23 @@ function ClientsSection(props) {
           items={[
             {
               name: "Instagram",
-              image: "https://uploads.divjoy.com/logo-instagram.svg",
+              image: "logo-instagram.svg",
               width: "150px"
             },
             {
-              name: "Slack",
-              image: "https://uploads.divjoy.com/logo-slack.svg",
-              width: "135px"
+              name: "Instagram",
+              image: "logo-instagram.svg",
+              width: "150px"
             },
             {
-              name: "Tinder",
-              image: "https://uploads.divjoy.com/logo-tinder.svg",
-              width: "90px"
+              name: "Instagram",
+              image: "logo-instagram.svg",
+              width: "150px"
             },
             {
-              name: "Spotify",
-              image: "https://uploads.divjoy.com/logo-spotify.svg",
-              width: "135px"
+              name: "Instagram",
+              image: "logo-instagram.svg",
+              width: "150px"
             }
           ]}
         />

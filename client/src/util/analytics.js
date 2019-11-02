@@ -10,11 +10,9 @@ const analytics = Analytics({
     // 1) Create a Google Analytics account: https://bit.ly/2G1ZWNN
     // 2) Setup a property and add your trackingId below
     // 3) Uncomment the following code to start tracking
-    /*
-      googleAnalyticsPlugin({
-        trackingId: ''
-      })
-      */
+    googleAnalyticsPlugin({
+      trackingId: 'UA-151307625-1'
+    })
   ]
 });
 

@@ -7,17 +7,15 @@ import ContactPage from "./contact";
 import { Switch, Route, Router } from "./../util/router.js";
 import Footer from "./../components/Footer";
 import "./../util/analytics.js";
-import { ProvideAuth } from "./../util/auth.js";
 
 function App(props) {
   return (
-    <ProvideAuth>
       <Router>
         <>
           <Navbar
             color="white"
             spaced={true}
-            logo="https://golang.org/lib/godoc/images/go-logo-blue.svg"
+            logo="go-logo-blue.svg"
           />
 
           <Switch>
@@ -49,12 +47,11 @@ function App(props) {
           <Footer
             color="light"
             size="normal"
-            logo="https://golang.org/lib/godoc/images/go-logo-blue.svg"
+            logo="go-logo-blue.svg"
             copyright="© 2019 GOLANGJOBS"
           />
         </>
       </Router>
-    </ProvideAuth>
   );
 }
 

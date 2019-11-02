@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/maratgaliev/golangjobs/config"
 	"github.com/maratgaliev/golangjobs/model"
@@ -72,7 +73,7 @@ func (sc *StoreContext) GetJob(tx *sql.Tx, id int) (*model.Job, error) {
 		row = sc.db.QueryRow(query, id)
 	}
 	job := &model.Job{}
-	if err := row.Scan(&job.Id, &job.Title, &job.Description, &job.City, &job.Email, &job.Company, &job.Phone, &job.ContactName, &job.CurrencyType, &job.EmploymentType, &job.Salary, &job.IsApproved, &job.IsRemote); err != nil {
+	if err := row.Scan(&job.Id, &job.Title, &job.Description, &job.City, &job.Email, &job.Company, &job.Phone, &job.ContactName, &job.CurrencyType, &job.EmploymentType, &job.Salary, &job.IsApproved, &job.IsRemote, &job.CreatedAt); err != nil {
 		if err != sql.ErrNoRows {
 			return nil, err
 		} else {
@@ -98,7 +99,7 @@ func (sc *StoreContext) GetJobs(tx *sql.Tx) ([]*model.Job, error) {
 	var jobs []*model.Job
 	for rows.Next() {
 		job := &model.Job{}
-		if err := rows.Scan(&job.Id, &job.Title, &job.Description, &job.City, &job.Email, &job.Company, &job.Phone, &job.ContactName, &job.CurrencyType, &job.EmploymentType, &job.Salary, &job.IsApproved, &job.IsRemote); err != nil {
+		if err := rows.Scan(&job.Id, &job.Title, &job.Description, &job.City, &job.Email, &job.Company, &job.Phone, &job.ContactName, &job.CurrencyType, &job.EmploymentType, &job.Salary, &job.IsApproved, &job.IsRemote, &job.CreatedAt); err != nil {
 			return nil, err
 		}
 		jobs = append(jobs, job)
@@ -107,13 +108,14 @@ func (sc *StoreContext) GetJobs(tx *sql.Tx) ([]*model.Job, error) {
 }
 
 func (sc *StoreContext) CreateJob(tx *sql.Tx, job *model.Job) (*int, error) {
-	var query = "INSERT INTO jobs(title, description, city, email, company, phone, contact_name, currency_type, employment_type, salary, is_approved, is_remote) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id;"
+	var query = "INSERT INTO jobs(title, description, city, email, company, phone, contact_name, currency_type, employment_type, salary, is_approved, is_remote, created_at) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id;"
 	var id int
 	var err error
+	dt := time.Now()
 	if tx != nil {
-		err = tx.QueryRow(query, job.Title, job.Description, job.City, job.Email, job.Company, job.Phone, job.ContactName, job.CurrencyType, job.EmploymentType, job.Salary, job.IsApproved, job.IsRemote).Scan(&id)
+		err = tx.QueryRow(query, job.Title, job.Description, job.City, job.Email, job.Company, job.Phone, job.ContactName, job.CurrencyType, job.EmploymentType, job.Salary, job.IsApproved, job.IsRemote, dt).Scan(&id)
 	} else {
-		err = sc.db.QueryRow(query, job.Title, job.Description, job.City, job.Email, job.Company, job.Phone, job.ContactName, job.CurrencyType, job.EmploymentType, job.Salary, job.IsApproved, job.IsRemote).Scan(&id)
+		err = sc.db.QueryRow(query, job.Title, job.Description, job.City, job.Email, job.Company, job.Phone, job.ContactName, job.CurrencyType, job.EmploymentType, job.Salary, job.IsApproved, job.IsRemote, dt).Scan(&id)
 	}
 	if err != nil {
 		return nil, err

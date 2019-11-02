@@ -1,5 +1,4 @@
 -- +migrate Up
-
 CREATE TABLE jobs(
   id		 SERIAL PRIMARY KEY,
   title   CHARACTER VARYING(255) NOT NULL,
@@ -13,7 +12,8 @@ CREATE TABLE jobs(
   employment_type  NUMERIC NOT NULL,
   salary NUMERIC NOT NULL,
   is_remote   BOOLEAN DEFAULT FALSE,
-  is_approved  BOOLEAN DEFAULT FALSE
+  is_approved  BOOLEAN DEFAULT FALSE,
+  created_at  TIMESTAMP NOT NULL
 );
 
 CREATE TABLE events(
@@ -26,7 +26,8 @@ CREATE TABLE events(
   contact_phone   CHARACTER VARYING(255) NOT NULL,
   address   CHARACTER VARYING(255) NOT NULL,
   event_date   TIMESTAMP NOT NULL,
-  is_approved  BOOLEAN DEFAULT FALSE
+  is_approved  BOOLEAN DEFAULT FALSE,
+  created_at  TIMESTAMP NOT NULL
 );
 
 -- +migrate Down

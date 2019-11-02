@@ -31,6 +31,7 @@ export function register(config) {
         // service worker/PWA documentation.
 
         navigator.serviceWorker.ready.then(function () {
+          // eslint-disable-next-line
           console.log('This web app is being served cache-first by a service ' + 'worker. To learn more, visit https://bit.ly/CRA-PWA');
         });
       } else {
@@ -56,6 +57,7 @@ function registerValidSW(swUrl, config) {
             // At this point, the updated precached content has been fetched,
             // but the previous service worker will still serve the older
             // content until all client tabs are closed.
+            // eslint-disable-next-line
             console.log('New content is available and will be used when all ' + 'tabs for this page are closed. See https://bit.ly/CRA-PWA.'); // Execute callback
 
             if (config && config.onUpdate) {
@@ -84,7 +86,7 @@ function checkValidServiceWorker(swUrl, config) {
   fetch(swUrl).then(function (response) {
     // Ensure service worker exists, and that we really are getting a JS file.
     var contentType = response.headers.get('content-type');
-
+    // eslint-disable-next-line
     if (response.status === 404 || contentType != null && contentType.indexOf('javascript') === -1) {
       // No service worker found. Probably a different app. Reload the page.
       navigator.serviceWorker.ready.then(function (registration) {
