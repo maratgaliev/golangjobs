@@ -1,34 +1,43 @@
 import React from "react";
 import "./Features.scss";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 function Features(props) {
   return (
     <div className="Features">
-      <div className='column is-narrow'>
-      {props.items.map((item, index) => (
-        <section key={index} className="hero is-light m-b-md">
-          <div className="hero-body">
-            <div className="container">
-              <div className="columns is-variable bd-klmn-columns is-3">
-                <div className="column is-8">
-                  <h3 className="title is-uppercase">
+      <div className="column is-narrow">
+        {props.items.map((item, index) => (
+          <section key={index} className="hero is-light m-b-md">
+            <header className="card-header">
+              <p className="card-header-title has-text-centered is-uppercase has-text-weight-bold is-family-code">
+                {item.city}
+              </p>
+            </header>
+            <div className="hero-body">
+              <div className="container">
+                <div className="has-text-centered row m-b-md">
+                  <h3 className="title is-uppercase has-text-weight-semibold has-text-info">
                     {item.title}
                   </h3>
-                  <h4 className="subtitle is-uppercase has-text-grey">
-                    {item.company} - {item.city}
-                  </h4>
+                  <h4 className="subtitle is-uppercase has-text-grey">{item.company}</h4>
                 </div>
-                <div className="column is-4 has-text-right">
-                  <p className=''>{dayjs(item.created_at).format('YYYY-MM-DD')}</p>
-                  <span className="tag is-medium is-info">УДАЛЕНКА</span>&nbsp;
-                  <span className="tag is-medium is-info">FULLTIME</span>
+                <div className="has-text-centered row m-b-md">
+                  <span className="tag is-medium is-success">УДАЛЕНКА</span>
+                  &nbsp;
+                  <span className="tag is-medium is-success">FULLTIME</span>
+                </div>
+                <div className="has-text-centered row">
+                  <span className="tag is-medium is-info">ПОДРОБНОСТИ</span>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      ))}
+            <footer className="item-footer">
+              <b className="card-footer-item has-text-weight-light is-family-secondary has-text-grey-dark">
+                ДОБАВЛЕНО: {dayjs(item.created_at).format("DD/MM/YYYY")}
+              </b>
+            </footer>
+          </section>
+        ))}
       </div>
     </div>
   );
