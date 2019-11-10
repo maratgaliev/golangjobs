@@ -12,11 +12,11 @@ type Job struct {
 	Email          string    `json:"email" validate:"required"`
 	Company        string    `json:"company" validate:"required"`
 	Phone          string    `json:"phone"`
+	Website        string    `json:"website" validate:"required"`
 	ContactName    string    `json:"contact_name"`
-	CurrencyType   int       `json:"currency_type"`
-	EmploymentType int       `json:"employment_type"`
+	CurrencyType   string    `json:"currency_type"`
+	EmploymentType string    `json:"employment_type"`
 	Salary         *int      `json:"salary"`
 	IsApproved     bool      `json:"is_approved"`
-	IsRemote       bool      `json:"is_remote"`
 	CreatedAt      time.Time `json:"created_at"`
 }

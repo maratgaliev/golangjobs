@@ -3,65 +3,106 @@ import FormStatus from "./FormStatus";
 import FormField from "./FormField";
 import SelectField from "./SelectField";
 import SectionButton from "./SectionButton";
-import SimpleMDE from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
+import Editor from "./Editor";
 
 function JobForm(props) {
-  // State for input values
   const [currency_type, setCurrencyType] = useState({ value: 'rub', label: 'RUB' });
   const [employment_type, setEmploymentType] = useState({ value: 'fulltime', label: 'Fulltime' });
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
-  const [contact_phone, setContactPhone] = useState("");
-  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [contact_name, setContactName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  // Whether to show errors
-  // We set to true if they submit and there are errors.
-  // We only show errors after they submit because
-  // it's annoying to see errors while typing.
+  const [salary, setSalary] = useState("");
+  const [website, setWebsite] = useState("");
   const [showErrors, setShowErrors] = useState(false);
 
-  // Error array we'll populate
   let errors = [];
 
-  // Function for fetching error for a field
   const getError = field => {
     return errors.find(e => e.field === field);
   };
 
-  // Function to see if field is empty
   const isEmpty = val => val.trim() === "";
 
-  // Add error if email empty
   if (isEmpty(email) ) {
     errors.push({
       field: "email",
-      message: "Please enter value"
+      message: "Введите email"
     });
   }
 
-  // Handle form submission
+  if (isEmpty(title) ) {
+    errors.push({
+      field: "title",
+      message: "Введите заголовок вакансии"
+    });
+  }
+
+  if (isEmpty(website) ) {
+    errors.push({
+      field: "website",
+      message: "Введите сайт компании"
+    });
+  }
+
+  if (isEmpty(city) ) {
+    errors.push({
+      field: "city",
+      message: "Введите город"
+    });
+  }
+
+  if (isEmpty(company) ) {
+    errors.push({
+      field: "company",
+      message: "Введите компанию"
+    });
+  }
+
+  if (isEmpty(company) ) {
+    errors.push({
+      field: "company",
+      message: "Введите компанию"
+    });
+  }
+
+  if (isEmpty(description) ) {
+    errors.push({
+      field: "description",
+      message: "Введите текст вакансии"
+    });
+  }
+
   const handleSubmit = e => {
-    // If field errors then show them
     if (errors.length) {
       setShowErrors(true);
     } else {
-      // Otherwise call onSubmit with form data
       if (props.onSubmit) {
         props.onSubmit({
           title,
           company,
-          currency_type,
-          employment_type,
+          website,
+          currency_type: currency_type.value,
+          employment_type: employment_type.value,
           city,
-          contact_phone,
-          name,
-          email,
-          message
+          description,
+          salary: parseInt(salary),
+          phone,
+          contact_name,
+          email
         });
+        setTitle('')
+        setCompany('')
+        setWebsite('')
+        setCity('')
+        setSalary('')
+        setPhone('')
+        setContactName('')
+        setEmail('')
+        setDescription('')
       }
     }
   };
@@ -75,7 +116,7 @@ function JobForm(props) {
       <form
         onSubmit={e => {
           e.preventDefault();
-          handleSubmit();
+          handleSubmit(e);
         }}
       >
         <div className="field is-horizontal">
@@ -95,9 +136,33 @@ function JobForm(props) {
             <FormField
               value={company}
               type="text"
-              placeholder="Наименование организации"
+              placeholder="Наименование компании"
               error={showErrors && getError("company")}
               onChange={value => setCompany(value)}
+            />
+          </div>
+        </div>
+
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <FormField
+              value={website}
+              type="text"
+              placeholder="Сайт компании"
+              error={showErrors && getError("website")}
+              onChange={value => setWebsite(value)}
+            />
+          </div>
+        </div>
+
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <FormField
+              value={salary}
+              type="text"
+              placeholder="Заработная плата"
+              error={showErrors && getError("salary")}
+              onChange={value => setSalary(value)}
             />
           </div>
         </div>
@@ -133,11 +198,11 @@ function JobForm(props) {
         <div className="field is-horizontal">
           <div className="field-body">
               <FormField
-                value={name}
+                value={contact_name}
                 type="text"
                 placeholder="Контактное лицо"
-                error={showErrors && getError("name")}
-                onChange={value => setName(value)}
+                error={showErrors && getError("contact_name")}
+                onChange={value => setContactName(value)}
               />
             <FormField
               value={email}
@@ -159,37 +224,37 @@ function JobForm(props) {
                 onChange={value => setCity(value)}
               />
             <FormField
-              value={contact_phone}
+              value={phone}
               type="text"
               placeholder="Телефон"
-              error={showErrors && getError("contactPhone")}
-              onChange={value => setContactPhone(value)}
+              error={showErrors && getError("phone")}
+              onChange={value => setPhone(value)}
             />
           </div>
         </div>
 
         <div className="field is-horizontal">
           <div className="field-body">
-            <SimpleMDE
-              value={message}
+            <Editor
+              value={description}
               type="textarea"
-              placeholder="Текст вакансии"
               options={{
                 autofocus: true,
                 spellChecker: false
               }}
-              //error={showErrors && getError("message")}
-              onChange={value => setMessage(value)}
+              error={showErrors && getError("description")}
+              onChange={value => setDescription(value)}
             />
           </div>
         </div>
+        
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
               <div className="control">
                 <SectionButton
                   parentColor={props.parentColor}
-                  size="medium"
+                  size="large"
                   state={
                     props.status && props.status.type === "pending"
                       ? "loading"

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import JobForm from "./JobForm";
-import contact from "./../util/contact.js";
+import jobsubmitter from "./../util/jobsubmitter.js";
 
 function NewJob(props) {
   const [status, setStatus] = useState();
 
-  const onSubmit = ({ name, email, message }) => {
+  const onSubmit = ({ contact_name, company, email, description, title, salary, employment_type, currency_type, website, phone, city}) => {
     setStatus({ type: "pending" });
 
-    contact.submit({ name, email, message }).then(() => {
+    jobsubmitter.submit({ contact_name, company, email, description, title, salary, employment_type, currency_type, website, phone, city }).then(() => {
       setStatus({
         type: "success",
-        message: "Your message has been sent! We'll get back to you soon."
+        message: "Спасибо, вакансия успешно добавлена и появится на сайте после модерации"
       });
     });
   };

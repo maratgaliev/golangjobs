@@ -1,5 +1,5 @@
 function submit(data) {
-  return fetch("/.netlify/functions/contact", {
+  return fetch("http://localhost:8081/api/jobs", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
