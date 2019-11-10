@@ -13,7 +13,7 @@ function SectionHeader(props) {
           {props.title && (
             <h1
               className={
-                "title is-spaced has-text-weight-bold" +
+                "title is-uppercase is-spaced has-text-weight-bold" +
                 (props.size ? ` is-${props.size}` : "") +
                 (props.size === 1 ? " is-size-2-mobile" : "")
               }
@@ -23,7 +23,7 @@ function SectionHeader(props) {
           )}
 
           {props.subtitle && (
-            <p className={"subtitle" + (props.size > 4 ? " is-6" : "")}>
+            <p className={"subtitle is-uppercase" + (props.size > 4 ? " is-6" : "")}>
               {props.subtitle}
             </p>
           )}

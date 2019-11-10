@@ -1,6 +1,7 @@
 import React from "react";
 import "./Features.scss";
 import dayjs from "dayjs";
+import { Link } from "./../util/router.js";
 
 function Features(props) {
   return (
@@ -17,7 +18,7 @@ function Features(props) {
               <div className="container">
                 <div className="has-text-centered row m-b-md">
                   <h3 className="title is-uppercase has-text-weight-semibold has-text-info">
-                    {item.title}
+                    <Link to={`/jobs/${item.id}`}>{item.title}</Link>
                   </h3>
                   <h4 className="subtitle is-uppercase has-text-grey">{item.company}</h4>
                 </div>
@@ -27,7 +28,7 @@ function Features(props) {
                   <span className="tag is-medium is-success">FULLTIME</span>
                 </div>
                 <div className="has-text-centered row">
-                  <span className="tag is-medium is-info">ПОДРОБНОСТИ</span>
+                  <span className="tag is-medium is-info"><Link to={`/jobs/${item.id}`}>ПОДРОБНОСТИ</Link></span>
                 </div>
               </div>
             </div>

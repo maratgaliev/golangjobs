@@ -9,7 +9,6 @@ function Section(props) {
     backgroundImage,
     backgroundImageOpacity,
     children,
-    // Passed to section element
     ...otherProps
   } = props;
 

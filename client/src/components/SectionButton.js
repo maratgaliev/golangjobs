@@ -6,7 +6,6 @@ function SectionButton(props) {
     size,
     state,
     fullWidth,
-    // Passed to button element
     ...otherProps
   } = props;
 

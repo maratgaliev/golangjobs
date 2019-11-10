@@ -1,4 +1,3 @@
-// Let's import React, our styles and React Async
 import React from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";

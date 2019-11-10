@@ -4,6 +4,8 @@ import IndexPage from "./index";
 import AboutPage from "./about";
 import FaqPage from "./faq";
 import ContactPage from "./contact";
+import NewJobPage from "./newjob";
+import JobPage from "./job";
 import { Switch, Route, Router } from "./../util/router.js";
 import Footer from "./../components/Footer";
 import "./../util/analytics.js";
@@ -26,6 +28,10 @@ function App(props) {
             <Route exact path="/faq" component={FaqPage} />
 
             <Route exact path="/contact" component={ContactPage} />
+
+            <Route exact path="/jobs/new" component={NewJobPage} />
+
+            <Route exact path="/jobs/:id" component={JobPage} />
 
             <Route
               component={({ location }) => {

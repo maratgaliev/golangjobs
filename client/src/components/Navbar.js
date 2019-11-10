@@ -11,7 +11,7 @@ function Navbar(props) {
         <div className="navbar-brand">
           <div className="navbar-item">
             <Link to="/">
-              <img className="image" src={props.logo} alt="Logo" />
+              <img className="image" src={process.env.PUBLIC_URL + '/' + props.logo} alt="Logo" />
             </Link>
           </div>
           <div
@@ -45,7 +45,7 @@ function Navbar(props) {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <Link className="navbar-item button is-info" to="/signin">
+                <Link className="navbar-item button is-info" to="/jobs/new">
                   ДОБАВИТЬ ВАКАНСИЮ
                 </Link>
               </div>

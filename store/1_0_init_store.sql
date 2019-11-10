@@ -10,7 +10,7 @@ CREATE TABLE jobs(
   contact_name   CHARACTER VARYING(255) NOT NULL,
   currency_type  NUMERIC NOT NULL,
   employment_type  NUMERIC NOT NULL,
-  salary NUMERIC NOT NULL,
+  salary NUMERIC DEFAULT NULL,
   is_remote   BOOLEAN DEFAULT FALSE,
   is_approved  BOOLEAN DEFAULT FALSE,
   created_at  TIMESTAMP NOT NULL

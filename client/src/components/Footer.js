@@ -9,7 +9,7 @@ function Footer(props) {
       <div className="FooterComponent__container container">
         <div className="brand left">
           <Link to="/">
-            <img src={props.logo} alt="Logo" />
+            <img src={process.env.PUBLIC_URL + "/" + props.logo} alt="Logo" />
           </Link>
         </div>
         <div className="links right">
