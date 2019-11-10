@@ -10,11 +10,11 @@ import (
 
 	"github.com/golang/mock/gomock"
 	"github.com/labstack/echo"
-	"github.com/stretchr/testify/assert"
 	"github.com/maratgaliev/golangjobs/api"
 	"github.com/maratgaliev/golangjobs/config"
 	"github.com/maratgaliev/golangjobs/model"
 	"github.com/maratgaliev/golangjobs/test/mock"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestApi_GetJob(t *testing.T) {
@@ -54,7 +54,7 @@ func TestApi_CreateJob(t *testing.T) {
 	api.Http.ServeHTTP(rec, req)
 	assert.Equal(t, http.StatusBadRequest, rec.Code)
 	// 200
-	catJSON = `{"title": "golang title", "description": "golang descr", "city": "kazan", "email": "hr@example.com", "company": "Company", "phone": "4167702450", "salary": 1000000}`
+	catJSON = `{"website": "http://google.com", "title": "golang title", "employment_type": "remote", "currency_type": "eur", "description": "golang descr", "city": "kazan", "email": "hr@example.com", "company": "Company", "phone": "4167702450", "salary": 1000000}`
 	id := 2
 	req = httptest.NewRequest(echo.POST, "/api/jobs/", strings.NewReader(catJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
@@ -81,7 +81,7 @@ func TestApi_UpdateJob(t *testing.T) {
 	api.Http.ServeHTTP(rec, req)
 	assert.Equal(t, http.StatusBadRequest, rec.Code)
 	// 404
-	catJSON = `{"title": "golang title", "description": "golang descr", "city": "kazan", "email": "hr@example.com", "company": "Company", "phone": "4167702450", "salary": 1000000}`
+	catJSON = `{"website": "http://google.com", "title": "golang title", "employment_type": "remote", "currency_type": "eur", "description": "golang descr", "city": "kazan", "email": "hr@example.com", "company": "Company", "phone": "4167702450", "salary": 1000000}`
 	req = httptest.NewRequest(echo.PUT, "/api/jobs/1", strings.NewReader(catJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	cs.EXPECT().UpdateJob(gomock.Any()).Return(sql.ErrNoRows).Times(1)
@@ -89,7 +89,7 @@ func TestApi_UpdateJob(t *testing.T) {
 	api.Http.ServeHTTP(rec, req)
 	assert.Equal(t, http.StatusNotFound, rec.Code)
 	// 204
-	catJSON = `{"title": "golang title", "description": "golang descr", "city": "kazan", "email": "hr@example.com", "company": "Company", "phone": "4167702450", "salary": 1000000}`
+	catJSON = `{"website": "http://google.com", "title": "golang title", "employment_type": "remote", "currency_type": "eur", "description": "golang descr", "city": "kazan", "email": "hr@example.com", "company": "Company", "phone": "4167702450", "salary": 1000000}`
 	req = httptest.NewRequest(echo.PUT, "/api/jobs/2", strings.NewReader(catJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	cs.EXPECT().UpdateJob(gomock.Any()).Return(nil).Times(1)
