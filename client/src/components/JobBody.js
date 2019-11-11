@@ -24,6 +24,10 @@ function JobBody(props) {
                       <br />
                     </>
                   )}
+                  <div className="has-text-centered row m-b-md">
+                    <span className="tag is-medium is-info is-uppercase">{props.job.employment_type}</span>
+                  </div>
+                  <br />
                   <div className="tags has-addons level-item">
                     <span className="tag is-rounded is-info">Добавлено</span>
                     <span className="tag is-rounded">

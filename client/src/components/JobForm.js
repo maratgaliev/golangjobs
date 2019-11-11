@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FormStatus from "./FormStatus";
 import FormField from "./FormField";
 import SelectField from "./SelectField";
 import SectionButton from "./SectionButton";
@@ -94,25 +93,21 @@ function JobForm(props) {
           contact_name,
           email
         });
-        setTitle('')
-        setCompany('')
-        setWebsite('')
-        setCity('')
-        setSalary('')
-        setPhone('')
-        setContactName('')
-        setEmail('')
-        setDescription('')
+        //setTitle('')
+        //setCompany('')
+        //setWebsite('')
+        //setCity('')
+        //setSalary('')
+        //setPhone('')
+        //setContactName('')
+        //setEmail('')
+        //setDescription('')
       }
     }
   };
 
   return (
     <>
-      {props.status && props.status.message && (
-        <FormStatus type={props.status.type} message={props.status.message} />
-      )}
-
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -147,7 +142,7 @@ function JobForm(props) {
           <div className="field-body">
             <FormField
               value={website}
-              type="text"
+              type="url"
               placeholder="Сайт компании"
               error={showErrors && getError("website")}
               onChange={value => setWebsite(value)}
@@ -159,7 +154,7 @@ function JobForm(props) {
           <div className="field-body">
             <FormField
               value={salary}
-              type="text"
+              type="number"
               placeholder="Заработная плата"
               error={showErrors && getError("salary")}
               onChange={value => setSalary(value)}

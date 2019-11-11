@@ -7,6 +7,7 @@ function Editor(props) {
     <div className="field">
       <div className="control">
         <SimpleMDE
+          id='custom_id'
           value={props.value}
           options={{
             autofocus: true,

@@ -15,6 +15,7 @@ function NewJobSection(props) {
           size={3}
         />
         <NewJob
+          message={props.message}
           parentColor={props.color}
           buttonText={props.buttonText}
         />

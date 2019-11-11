@@ -20,21 +20,20 @@ function Features(props) {
                   <h3 className="title is-uppercase has-text-weight-semibold has-text-info">
                     <Link to={`/jobs/${item.id}`}>{item.title}</Link>
                   </h3>
-                  <h4 className="subtitle is-uppercase has-text-grey">{item.company}</h4>
-                </div>
-                <div className="has-text-centered row m-b-md">
-                  <span className="tag is-medium is-success">УДАЛЕНКА</span>
-                  &nbsp;
-                  <span className="tag is-medium is-success">FULLTIME</span>
+                  <h4 className="subtitle is-uppercase has-text-grey">
+                    {item.company}
+                  </h4>
                 </div>
                 <div className="has-text-centered row">
-                  <span className="tag is-medium is-info"><Link to={`/jobs/${item.id}`}>ПОДРОБНОСТИ</Link></span>
+                  <span className="tag is-medium is-info">
+                    <Link to={`/jobs/${item.id}`}>ПОДРОБНОСТИ</Link>
+                  </span>
                 </div>
               </div>
             </div>
             <footer className="item-footer">
-              <b className="card-footer-item has-text-weight-light is-family-secondary has-text-grey-dark">
-                ДОБАВЛЕНО: {dayjs(item.created_at).format("DD/MM/YYYY")}
+              <b className="is-uppercase card-footer-item has-text-weight-light is-family-secondary has-text-grey-dark">
+                {dayjs(item.created_at).format("DD MMM YYYY")}
               </b>
             </footer>
           </section>

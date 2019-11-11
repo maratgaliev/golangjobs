@@ -29,8 +29,8 @@ function App(props) {
 
             <Route exact path="/contact" component={ContactPage} />
 
-            <Route exact path="/jobs/new" component={NewJobPage} />
-
+            <Route path="/jobs/new" component={NewJobPage} />
+            
             <Route exact path="/jobs/:id" component={JobPage} />
 
             <Route

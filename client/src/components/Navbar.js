@@ -45,9 +45,9 @@ function Navbar(props) {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <Link className="navbar-item button is-info" to="/jobs/new">
+                <a className="navbar-item button is-info" href="/jobs/new">
                   ДОБАВИТЬ ВАКАНСИЮ
-                </Link>
+                </a>
               </div>
             </div>
           </div>

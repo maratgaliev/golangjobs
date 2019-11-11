@@ -84,7 +84,7 @@ func (sc *StoreContext) GetJob(tx *sql.Tx, id int) (*model.Job, error) {
 }
 
 func (sc *StoreContext) GetJobs(tx *sql.Tx) ([]*model.Job, error) {
-	query := "SELECT * FROM jobs order by id desc;"
+	query := "SELECT * FROM jobs where is_approved=true order by id desc;"
 	var rows *sql.Rows
 	var err error
 	if tx != nil {
