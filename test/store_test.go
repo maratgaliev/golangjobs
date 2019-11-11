@@ -4,10 +4,10 @@ import (
 	"testing"
 
 	_ "github.com/lib/pq"
-	"github.com/stretchr/testify/assert"
 	"github.com/maratgaliev/golangjobs/config"
 	"github.com/maratgaliev/golangjobs/model"
 	"github.com/maratgaliev/golangjobs/store"
+	"github.com/stretchr/testify/assert"
 )
 
 var st store.Store
@@ -41,7 +41,7 @@ func TestStore_GetJobs(t *testing.T) {
 	assert.NoError(t, err)
 	tx, _ := st.Begin()
 	defer st.Rollback(tx)
-	st.CreateJob(tx, &model.Job{Title: "text"})
+	st.CreateJob(tx, &model.Job{Title: "text", IsApproved: true})
 	res, _ := st.GetJobs(tx)
 	assert.NotEmpty(t, res)
 }
