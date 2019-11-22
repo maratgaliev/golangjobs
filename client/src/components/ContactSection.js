@@ -8,8 +8,8 @@ function ContactSection(props) {
       <div className="container">
         <div className="content is-medium has-text-left">
           <p>По всем идеям и предложениям:</p> 
-          <p>Сайт: <a href="http://maratgaliev.com">http://maratgaliev.com</a></p>
-          <p>Почта: <a href='mailto:kazanlug@gmail.com'>kazanlug@gmail.com</a>.</p>
+          <p>Сайт: <a target='_blank' href="http://maratgaliev.com">http://maratgaliev.com</a></p>
+          <p>Почта: <a href='mailto:kazanlug@gmail.com'>kazanlug@gmail.com</a></p>
         </div>
       </div>
     </Section>

@@ -28,9 +28,9 @@ function Navbar(props) {
             <Link className="navbar-item" to="/">
               ГЛАВНАЯ
             </Link>
-            <Link className="navbar-item" to="/events">
+            {/* <Link className="navbar-item" to="/events">
               СОБЫТИЯ
-            </Link>
+            </Link> */}
             <Link className="navbar-item" to="/about">
               О ПРОЕКТЕ
             </Link>
